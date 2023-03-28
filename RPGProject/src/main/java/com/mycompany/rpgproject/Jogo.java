@@ -13,9 +13,13 @@ import java.util.Scanner;
 public class Jogo {
 
     private Player player;
+    private Player player2;
+    private Boolean Ronda;
 
-    public Jogo(Player player) {
+    public Jogo(Player player, Player player2) {
         this.player = player;
+        this.player2 = player2;
+        this.Ronda = true;
     }
 
     public void ComeçarJogo() {

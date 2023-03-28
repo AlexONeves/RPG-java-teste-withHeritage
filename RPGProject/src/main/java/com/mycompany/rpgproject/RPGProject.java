@@ -29,12 +29,12 @@ class menu {
                     Player.criarJogador(NumDeJogadores);
                     break;
                 case 2:
-                    if (Player.allPlayers.isEmpty()) {
-                        System.out.println("Não existem jogadores para começar o jogo!!!");
+                    if (Player.allPlayers.isEmpty() || Player.allPlayers.size() < 2) {
+                        System.out.println("Não existem jogadores suficientes para começar o jogo!!!");
                     } else {
                         System.out.println("Lista de Personagens: ");
                         Player.verJogadores();
-                        System.out.println("Selecione a sua personagem: ");
+                        System.out.println("Jogador 1 selecione a sua personagem: ");
                         scanner.nextLine(); // Corrigir erro de passar por cima
                         String Name = scanner.nextLine();
 
@@ -47,12 +47,27 @@ class menu {
                             }
                         }
 
-                        if (JogadorSelecionado != null) {
-                            System.out.println("Você selecionou o jogador: " + JogadorSelecionado.getNome());
-                            Jogo novoJogo = new Jogo(JogadorSelecionado);
+                        System.out.println("Jogador 2 selecione a sua personagem: ");
+                        String Name2 = scanner.nextLine();
+
+                        Player JogadorSelecionado2 = null;
+
+                        for (Player p2 : Player.allPlayers) {
+                            if (p2.getNome().equals(Name2)) {
+                                JogadorSelecionado2 = p2;
+                                break;
+                            }
+                        }
+
+                        if (JogadorSelecionado == JogadorSelecionado2) {
+                            System.out.println("Não podem escolher os mesmos personagens.");
+                        } else if (JogadorSelecionado != null && JogadorSelecionado2 != null) {
+
+                            System.out.println("Jogador1 selecionou a personagem: " + JogadorSelecionado.getNome() + " e o Jogador2 selecionou a personagem: " + JogadorSelecionado.getNome());
+                            Jogo novoJogo = new Jogo(JogadorSelecionado, JogadorSelecionado2);
                             novoJogo.ComeçarJogo();
                         } else {
-                            System.out.println("Jogador não encontrado.");
+                            System.out.println("Personagem não encontrado.");
                         }
                     }
 

@@ -139,14 +139,6 @@ public class Player {
 
     }
 
-    private boolean getWarriorStatus() {
-        return GajoOP;
-    }
-
-    private boolean getMagoStatus() {
-        return Mago;
-    }
-
     public static void EditarJogadorOpt() {
         int option = 0;
         Scanner sc = new Scanner(System.in);
@@ -238,7 +230,6 @@ class Mago extends Player {
 class GajoOP extends Player {
 
     private int SpecialAT;
-    Player player;
 
     public GajoOP(String Nome) {
         super(Nome);
@@ -254,4 +245,5 @@ class GajoOP extends Player {
     public int getSpecial() {
         return SpecialAT;
     }
+
 }
